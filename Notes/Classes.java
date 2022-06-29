@@ -13,6 +13,10 @@ public class Classes {
         Lens len3 = new Lens("cannon", "25px");
 
         len1.brand = "samsung";
+        System.out.println("Cycle speed " + cycle.getSpeed());
+        System.out.println("Seat Height " + cycle.seatHeight);
+        cycle.speedUp(10);
+        System.out.println("Cycle speed " + cycle.getSpeed());
 
         System.out.println(len1.brand);
 
@@ -70,3 +74,42 @@ class MobileCam extends Lens{
         this.frontcam = frontcam;
     }
 }
+interface Bicycle{
+    void speedUp(int increment);
+    void applyBrake(int decrement);
+}
+class MountainBike implements Bicycle {
+
+    private int speed;
+    private int gear;
+    public int seatHeight;
+
+    MountainBike(int speed,int gear, int seatHeight){
+        this.seatHeight = seatHeight;
+        this.gear= gear;
+        this.speed= speed;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getGear() {
+        return gear;
+    }
+
+    public void setGear(int gear) {
+        this.gear = gear;
+    }
+
+    @Override // Using this because I have already declared them in Bicycle but need to tell them what to do now
+    public void speedUp(int increment) {
+        speed += increment;
+    }
+    @Override
+    public void applyBrake(int decrement) {
+        speed -= decrement;
+
+    }
+}
+
